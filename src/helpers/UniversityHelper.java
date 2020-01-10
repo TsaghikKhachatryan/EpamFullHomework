@@ -5,7 +5,7 @@ import models.*;
 public class UniversityHelper {
     public static University university;
 
-    public static void creteTheUniversity(){
+    public static void creteTheUniversity() {
         Subject mathematics = new Subject("Mathematics");
         Subject english = new Subject("English");
         Subject armenian = new Subject("Armenian");
@@ -110,26 +110,42 @@ public class UniversityHelper {
         university = new University("YSU", "Alek Manukyan 1", new Faculty[]{faculty1, faculty2});
     }
 
-    public static float calculateStudentsAverageMarkFromAllSubjects(Student student){
+    public static float calculateStudentsAverageMarkFromAllSubjects(Student student) {
         float averageValue = 0;
-        for (Mark mark: student.getMarks()) {
-            averageValue+=mark.getValue();
+        for (Mark mark : student.getMarks()) {
+            averageValue += mark.getValue();
         }
-        return averageValue/student.getMarks().length;
+        return averageValue / student.getMarks().length;
     }
 
-    public static float calculateStudentsAverageMarkOfGroupFromSubject(Group group, Subject subject){
+    public static float calculateStudentsAverageMarkOfGroupFromSubject(Group group, Subject subject) {
         float averageValue = 0;
-        int quantityOfMarks=0;
-        for (Student student:group.getStudents()) {
-            for (Mark mark: student.getMarks()) {
-                if(mark.getSubject().equals(subject)) {
+        int quantityOfMarks = 0;
+        for (Student student : group.getStudents()) {
+            for (Mark mark : student.getMarks()) {
+                if (mark.getSubject().equals(subject)) {
                     averageValue += mark.getValue();
                     ++quantityOfMarks;
                 }
             }
         }
-        return averageValue/quantityOfMarks;
+        return averageValue / quantityOfMarks;
+    }
+
+    public static float calculateStudentsAverageMarkOfFacultetFromSubject(Faculty faculty, Subject subject) {
+        float averageValue = 0;
+        int quantityOfMarks = 0;
+        for (Group group : faculty.getGroups()) {
+            for (Student student : group.getStudents()) {
+                for (Mark mark : student.getMarks()) {
+                    if (mark.getSubject().equals(subject)) {
+                        averageValue += mark.getValue();
+                        ++quantityOfMarks;
+                    }
+                }
+            }
+        }
+        return averageValue / quantityOfMarks;
     }
 
 }
