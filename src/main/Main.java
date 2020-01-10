@@ -13,8 +13,7 @@ public class Main {
         Group group = faculty.getGroups()[0];
         Student student = group.getStudents()[1];
         UniversityHelper.calculateStudentsAverageMarkOfGroupFromSubject(group,student.getSubjects()[0]);
-        float f = universityHelper.calculateStudentsAverageMarkOfFacultetFromSubject(faculty,student.getSubjects()[0]);
-        System.out.println(f);
+
     }
 
 }

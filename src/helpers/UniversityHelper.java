@@ -132,7 +132,7 @@ public class UniversityHelper {
         return averageValue / quantityOfMarks;
     }
 
-    public static float calculateStudentsAverageMarkOfFacultetFromSubject(Faculty faculty, Subject subject) {
+    public static float calculateStudentsAverageMarkOfFacultyFromSubject(Faculty faculty, Subject subject) {
         float averageValue = 0;
         int quantityOfMarks = 0;
         for (Group group : faculty.getGroups()) {
@@ -148,4 +148,21 @@ public class UniversityHelper {
         return averageValue / quantityOfMarks;
     }
 
+    public static float calculateStudentsAverageMarkOfUniversityFromSubject(University university, Subject subject) {
+        float averageValue = 0;
+        int quantityOfMarks = 0;
+        for (Faculty faculty : university.getFaculties()) {
+            for (Group group : faculty.getGroups()) {
+                for (Student student : group.getStudents()) {
+                    for (Mark mark : student.getMarks()) {
+                        if (mark.getSubject().equals(subject)) {
+                            averageValue += mark.getValue();
+                            ++quantityOfMarks;
+                        }
+                    }
+                }
+            }
+        }
+        return averageValue / quantityOfMarks;
+    }
 }
