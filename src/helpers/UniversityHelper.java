@@ -118,4 +118,18 @@ public class UniversityHelper {
         return averageValue/student.getMarks().length;
     }
 
+    public static float calculateStudentsAverageMarkOfGroupFromSubject(Group group, Subject subject){
+        float averageValue = 0;
+        int quantityOfMarks=0;
+        for (Student student:group.getStudents()) {
+            for (Mark mark: student.getMarks()) {
+                if(mark.getSubject().equals(subject)) {
+                    averageValue += mark.getValue();
+                    ++quantityOfMarks;
+                }
+            }
+        }
+        return averageValue/quantityOfMarks;
+    }
+
 }

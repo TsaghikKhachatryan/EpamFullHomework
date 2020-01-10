@@ -12,9 +12,9 @@ public class Main {
         Faculty faculty = UniversityHelper.university.getFaculties()[0];
         Group group = faculty.getGroups()[0];
         Student student = group.getStudents()[1];
-        float f = universityHelper.calculateStudentsAverageMarkFromAllSubjects(student);
+        UniversityHelper.calculateStudentsAverageMarkOfGroupFromSubject(group,student.getSubjects()[0]);
+        float f = universityHelper.calculateStudentsAverageMarkOfGroupFromSubject(group,student.getSubjects()[0]);
         System.out.println(f);
-
 
     }
 
