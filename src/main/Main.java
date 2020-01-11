@@ -1,9 +1,8 @@
 package main;
 
+import Exceptions.FacultyAbsenceException;
 import helpers.UniversityHelper;
 import models.*;
-
-import java.sql.SQLOutput;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,8 +11,12 @@ public class Main {
         Faculty faculty = UniversityHelper.university.getFaculties()[0];
         Group group = faculty.getGroups()[0];
         Student student = group.getStudents()[1];
-        UniversityHelper.calculateStudentsAverageMarkOfGroupFromSubject(group,student.getSubjects()[0]);
 
+        try {
+            UniversityHelper.calculateAverageMarkOfUniversityFromSubject(UniversityHelper.university, student.getSubjects()[0]);
+        } catch (FacultyAbsenceException e) {
+            System.out.println(e.toString());
+        }
     }
 
 }

@@ -1,19 +1,26 @@
 package models;
 
+import Exceptions.MarkOutOfRangeException;
+
 public class Mark {
     private int value;
     private Subject subject;
 
-    public Mark(MarkBuilder builder) {
+    private Mark(MarkBuilder builder) {
         this.value = builder.value;
         this.subject = builder.subject;
     }
 
     public static class MarkBuilder {
+        private int minMarkValue=0;
+        private int maxMarkValue=10;
         private int value;
         private Subject subject;
 
         public MarkBuilder value(int value) {
+            if(value<minMarkValue||value>maxMarkValue){
+                throw new MarkOutOfRangeException(value);
+            }
             this.value = value;
             return this;
         }

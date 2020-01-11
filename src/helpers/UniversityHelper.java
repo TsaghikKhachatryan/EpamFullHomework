@@ -1,5 +1,9 @@
 package helpers;
 
+import Exceptions.FacultyAbsenceException;
+import Exceptions.GroupAbsenceException;
+import Exceptions.StudentAbsenceException;
+import Exceptions.SubjectAbsenceException;
 import models.*;
 
 public class UniversityHelper {
@@ -112,15 +116,22 @@ public class UniversityHelper {
 
     public static float calculateStudentsAverageMarkFromAllSubjects(Student student) {
         float averageValue = 0;
+        if (student.getSubjects() == null || student.getSubjects().length == 0) {
+            throw new SubjectAbsenceException(student);
+        }
         for (Mark mark : student.getMarks()) {
             averageValue += mark.getValue();
         }
         return averageValue / student.getMarks().length;
+
     }
 
-    public static float calculateStudentsAverageMarkOfGroupFromSubject(Group group, Subject subject) {
+    public static float calculateAverageMarkOfGroupFromSubject(Group group, Subject subject) {
         float averageValue = 0;
         int quantityOfMarks = 0;
+        if (group.getStudents() == null || group.getStudents().length == 0) {
+            throw new StudentAbsenceException(group);
+        }
         for (Student student : group.getStudents()) {
             for (Mark mark : student.getMarks()) {
                 if (mark.getSubject().equals(subject)) {
@@ -132,10 +143,16 @@ public class UniversityHelper {
         return averageValue / quantityOfMarks;
     }
 
-    public static float calculateStudentsAverageMarkOfFacultyFromSubject(Faculty faculty, Subject subject) {
+    public static float calculateAverageMarkOfFacultyFromSubject(Faculty faculty, Subject subject) {
         float averageValue = 0;
         int quantityOfMarks = 0;
+        if (faculty.getGroups() == null || faculty.getGroups().length == 0) {
+            throw new GroupAbsenceException(faculty);
+        }
         for (Group group : faculty.getGroups()) {
+            if (group.getStudents() == null || group.getStudents().length == 0) {
+                throw new StudentAbsenceException(group);
+            }
             for (Student student : group.getStudents()) {
                 for (Mark mark : student.getMarks()) {
                     if (mark.getSubject().equals(subject)) {
@@ -148,11 +165,20 @@ public class UniversityHelper {
         return averageValue / quantityOfMarks;
     }
 
-    public static float calculateStudentsAverageMarkOfUniversityFromSubject(University university, Subject subject) {
+    public static float calculateAverageMarkOfUniversityFromSubject(University university, Subject subject)throws FacultyAbsenceException {
         float averageValue = 0;
         int quantityOfMarks = 0;
+        if(university.getFaculties()==null || university.getFaculties().length==0){
+            throw new FacultyAbsenceException(university);
+        }
         for (Faculty faculty : university.getFaculties()) {
+            if (faculty.getGroups() == null || faculty.getGroups().length == 0) {
+                throw new GroupAbsenceException(faculty);
+            }
             for (Group group : faculty.getGroups()) {
+                if (group.getStudents() == null || group.getStudents().length == 0) {
+                    throw new StudentAbsenceException(group);
+                }
                 for (Student student : group.getStudents()) {
                     for (Mark mark : student.getMarks()) {
                         if (mark.getSubject().equals(subject)) {

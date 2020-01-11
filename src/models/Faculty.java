@@ -9,6 +9,10 @@ public class Faculty {
         this.groups = groups;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public Group[] getGroups() {
         return groups;
     }

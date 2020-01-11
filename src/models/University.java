@@ -11,6 +11,14 @@ public class University {
         this.faculties = faculties;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
     public Faculty[] getFaculties() {
         return faculties;
     }
