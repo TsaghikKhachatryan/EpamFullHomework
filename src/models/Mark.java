@@ -4,7 +4,7 @@ import Exceptions.MarkOutOfRangeException;
 
 public class Mark {
     private int value;
-    private Subject subject;
+    private String subject;
 
     private Mark(MarkBuilder builder) {
         this.value = builder.value;
@@ -15,7 +15,7 @@ public class Mark {
         private int minMarkValue=0;
         private int maxMarkValue=10;
         private int value;
-        private Subject subject;
+        private String subject;
 
         public MarkBuilder value(int value) {
             if(value<minMarkValue||value>maxMarkValue){
@@ -25,7 +25,7 @@ public class Mark {
             return this;
         }
 
-        public MarkBuilder subject(Subject subject) {
+        public MarkBuilder subject(String subject) {
             this.subject = subject;
             return this;
         }
@@ -41,7 +41,7 @@ public class Mark {
         return value;
     }
 
-    public Subject getSubject() {
+    public String getSubject() {
         return subject;
     }
 }

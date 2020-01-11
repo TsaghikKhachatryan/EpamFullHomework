@@ -6,21 +6,22 @@ import Exceptions.StudentAbsenceException;
 import Exceptions.SubjectAbsenceException;
 import models.*;
 
+import java.util.Random;
+
 public class UniversityHelper {
-    public static University university;
 
-    public static void creteTheUniversity() {
-        Subject mathematics = new Subject("Mathematics");
-        Subject english = new Subject("English");
-        Subject armenian = new Subject("Armenian");
-        Subject logic = new Subject("Logic");
-        Subject sociology = new Subject("Sociology");
-        Subject physics = new Subject("Physics");
+    public static University creteTheUniversity() {
+        String mathematics = "Mathematics";
+        String english = "English";
+        String armenian = "Armenian";
+        String logic = "Logic";
+        String sociology = "Sociology";
+        String physics = "Physics";
 
-        Subject[] subjectsOfGroup701 = new Subject[]{physics, sociology, armenian};
-        Subject[] subjectsOfGroup702 = new Subject[]{mathematics, logic, sociology};
-        Subject[] subjectsOfGroup501 = new Subject[]{english, logic, armenian};
-        Subject[] subjectsOfGroup502 = new Subject[]{english, sociology, physics};
+        String[] subjectsOfGroup701 = new String[]{physics, sociology, armenian};
+        String[] subjectsOfGroup702 = new String[]{mathematics, logic, sociology};
+        String[] subjectsOfGroup501 = new String[]{english, logic, armenian};
+        String[] subjectsOfGroup502 = new String[]{english, sociology, physics};
 
         Mark.MarkBuilder markBuilder = new Mark.MarkBuilder();
         markBuilder.subject(physics);
@@ -54,7 +55,6 @@ public class UniversityHelper {
         Mark englishC = markBuilder.value(3).build();
 
         Student.StudentBuilder studentBuilder701 = new Student.StudentBuilder(subjectsOfGroup701);
-
         Student student1 = studentBuilder701.firstName("Ani")
                 .lastName("Poghosyan")
                 .marks(new Mark[]{physicsB, sociologyC, armenianA})
@@ -111,10 +111,10 @@ public class UniversityHelper {
         Faculty faculty1 = new Faculty("Applied Mathematics", new Group[]{group1, group2});
         Faculty faculty2 = new Faculty("romanGermanic", new Group[]{group3, group4});
 
-        university = new University("YSU", "Alek Manukyan 1", new Faculty[]{faculty1, faculty2});
+        return new University("YSU", "Alek Manukyan 1", new Faculty[]{faculty1, faculty2});
     }
 
-    public static float calculateStudentsAverageMarkFromAllSubjects(Student student) {
+    public static void calculateStudentsAverageMarkFromAllSubjects(Student student) {
         float averageValue = 0;
         if (student.getSubjects() == null || student.getSubjects().length == 0) {
             throw new SubjectAbsenceException(student);
@@ -122,11 +122,11 @@ public class UniversityHelper {
         for (Mark mark : student.getMarks()) {
             averageValue += mark.getValue();
         }
-        return averageValue / student.getMarks().length;
-
+        System.out.println(student.getFirstName() + " " + student.getLastName() + " - average mark from all subjects : "
+                + averageValue / student.getMarks().length);
     }
 
-    public static float calculateAverageMarkOfGroupFromSubject(Group group, Subject subject) {
+    public static void calculateAverageMarkOfGroupFromSubject(Group group, String subject) {
         float averageValue = 0;
         int quantityOfMarks = 0;
         if (group.getStudents() == null || group.getStudents().length == 0) {
@@ -140,10 +140,11 @@ public class UniversityHelper {
                 }
             }
         }
-        return averageValue / quantityOfMarks;
+        System.out.println("Group :" + group.getName() + " - average mark from " + subject + " : "
+                + averageValue / quantityOfMarks);
     }
 
-    public static float calculateAverageMarkOfFacultyFromSubject(Faculty faculty, Subject subject) {
+    public static void calculateAverageMarkOfFacultyFromSubject(Faculty faculty, String subject) {
         float averageValue = 0;
         int quantityOfMarks = 0;
         if (faculty.getGroups() == null || faculty.getGroups().length == 0) {
@@ -162,13 +163,16 @@ public class UniversityHelper {
                 }
             }
         }
-        return averageValue / quantityOfMarks;
+        System.out.println("Faculty :" + faculty.getName() + " - average mark from " + subject + " : "
+                + averageValue / quantityOfMarks);
     }
 
-    public static float calculateAverageMarkOfUniversityFromSubject(University university, Subject subject)throws FacultyAbsenceException {
+    public static void calculateAverageMarkOfUniversityFromSubject(University university, String subject)
+            throws FacultyAbsenceException {
+
         float averageValue = 0;
         int quantityOfMarks = 0;
-        if(university.getFaculties()==null || university.getFaculties().length==0){
+        if (university.getFaculties() == null || university.getFaculties().length == 0) {
             throw new FacultyAbsenceException(university);
         }
         for (Faculty faculty : university.getFaculties()) {
@@ -189,6 +193,56 @@ public class UniversityHelper {
                 }
             }
         }
-        return averageValue / quantityOfMarks;
+        System.out.println("University :" + university.getName() + " - average mark from " + subject + " : "
+                + averageValue / quantityOfMarks);
+    }
+
+    public static Student getRandomStudent(University university) {
+        Group group = getRandomGroup(university);
+        Random rand = new Random();
+        int rand_int = rand.nextInt(group.getStudents().length);
+        return group.getStudents()[rand_int];
+    }
+
+    public static Student getRandomStudent(Group group) {
+        Random rand = new Random();
+        int rand_int = rand.nextInt(group.getStudents().length);
+        return group.getStudents()[rand_int];
+    }
+
+    public static String getRandomSubject(University university) {
+        Faculty faculty = getRandomFaculty(university);
+        return getRandomSubject(faculty);
+    }
+
+    public static String getRandomSubject(Faculty faculty) {
+        Group group = getRandomGroup(faculty);
+        return getRandomSubject(group);
+    }
+
+    public static String getRandomSubject(Group group) {
+        Student student = getRandomStudent(group);
+        Random rand = new Random();
+        int rand_int = rand.nextInt(student.getSubjects().length);
+        return student.getSubjects()[rand_int];
+    }
+
+    public static Group getRandomGroup(University university) {
+        Faculty faculty = getRandomFaculty(university);
+        Random rand = new Random();
+        int rand_int = rand.nextInt(faculty.getGroups().length);
+        return faculty.getGroups()[rand_int];
+    }
+
+    public static Faculty getRandomFaculty(University university) {
+        Random rand = new Random();
+        int rand_int = rand.nextInt(university.getFaculties().length);
+        return university.getFaculties()[rand_int];
+    }
+
+    public static Group getRandomGroup(Faculty faculty) {
+        Random rand = new Random();
+        int rand_int = rand.nextInt(faculty.getGroups().length);
+        return faculty.getGroups()[rand_int];
     }
 }

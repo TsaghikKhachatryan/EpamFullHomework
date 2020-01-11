@@ -3,7 +3,7 @@ package models;
 public class Student  {
     private String firstName;
     private String lastName;
-    private Subject[] subjects;
+    private String[] subjects;
     private Mark[] marks;
 
     private Student(StudentBuilder builder){
@@ -15,10 +15,10 @@ public class Student  {
     public static class StudentBuilder{
         private String firstName;
         private String lastName;
-        private Subject[] subjects;
+        private String[] subjects;
         private Mark[] marks;
 
-        public StudentBuilder(Subject[] subjects) {
+        public StudentBuilder(String[] subjects) {
             this.subjects = subjects;
         }
 
@@ -51,7 +51,7 @@ public class Student  {
         return lastName;
     }
 
-    public Subject[] getSubjects() {
+    public String[] getSubjects() {
         return subjects;
     }
 

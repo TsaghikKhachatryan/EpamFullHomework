@@ -6,17 +6,24 @@ import models.*;
 
 public class Main {
     public static void main(String[] args) {
-        UniversityHelper universityHelper = new UniversityHelper();
-        universityHelper.creteTheUniversity();
-        Faculty faculty = UniversityHelper.university.getFaculties()[0];
-        Group group = faculty.getGroups()[0];
-        Student student = group.getStudents()[1];
+        University university = UniversityHelper.creteTheUniversity();
+
+        //Getting random student from University and calculating average mark
+        UniversityHelper.calculateStudentsAverageMarkFromAllSubjects(UniversityHelper.getRandomStudent(university));
+
+        //Getting a random group from University and calculating average mark from random subject of that group
+        Group group = UniversityHelper.getRandomGroup(university);
+        UniversityHelper.calculateAverageMarkOfGroupFromSubject(group, UniversityHelper.getRandomSubject(group));
+
+        //Getting a random faculty from University and calculating average mark from random subject of that faculty
+        Faculty faculty = UniversityHelper.getRandomFaculty(university);
+        UniversityHelper.calculateAverageMarkOfFacultyFromSubject(faculty, UniversityHelper.getRandomSubject(faculty));
 
         try {
-            UniversityHelper.calculateAverageMarkOfUniversityFromSubject(UniversityHelper.university, student.getSubjects()[0]);
+            UniversityHelper.calculateAverageMarkOfUniversityFromSubject(university,
+                    UniversityHelper.getRandomSubject(university));
         } catch (FacultyAbsenceException e) {
             System.out.println(e.toString());
         }
     }
-
 }
