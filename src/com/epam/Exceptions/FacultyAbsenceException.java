@@ -1,6 +1,6 @@
-package Exceptions;
+package com.epam.Exceptions;
 
-import models.University;
+import com.epam.Exceptions.models.University;
 
 public class FacultyAbsenceException extends Exception {
     private University university;

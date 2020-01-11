@@ -1,10 +1,10 @@
-package helpers;
+package com.epam.Exceptions.helpers;
 
-import Exceptions.FacultyAbsenceException;
-import Exceptions.GroupAbsenceException;
-import Exceptions.StudentAbsenceException;
-import Exceptions.SubjectAbsenceException;
-import models.*;
+import com.epam.Exceptions.FacultyAbsenceException;
+import com.epam.Exceptions.GroupAbsenceException;
+import com.epam.Exceptions.StudentAbsenceException;
+import com.epam.Exceptions.SubjectAbsenceException;
+import com.epam.Exceptions.models.*;
 
 import java.util.Random;
 
@@ -140,7 +140,7 @@ public class UniversityHelper {
                 }
             }
         }
-        System.out.println("Group :" + group.getName() + " - average mark from " + subject + " : "
+        System.out.println("Group : " + group.getName() + " - average mark from " + subject + " : "
                 + averageValue / quantityOfMarks);
     }
 
@@ -163,7 +163,7 @@ public class UniversityHelper {
                 }
             }
         }
-        System.out.println("Faculty :" + faculty.getName() + " - average mark from " + subject + " : "
+        System.out.println("Faculty : " + faculty.getName() + " - average mark from " + subject + " : "
                 + averageValue / quantityOfMarks);
     }
 
@@ -193,7 +193,7 @@ public class UniversityHelper {
                 }
             }
         }
-        System.out.println("University :" + university.getName() + " - average mark from " + subject + " : "
+        System.out.println("University : " + university.getName() + " - average mark from " + subject + " : "
                 + averageValue / quantityOfMarks);
     }
 

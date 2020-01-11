@@ -1,4 +1,4 @@
-package models;
+package com.epam.Exceptions.models;
 
 public class Group {
     private String name;

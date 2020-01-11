@@ -1,6 +1,6 @@
-package Exceptions;
+package com.epam.Exceptions;
 
-import models.Faculty;
+import com.epam.Exceptions.models.Faculty;
 
 public class GroupAbsenceException extends RuntimeException {
     private Faculty faculty;

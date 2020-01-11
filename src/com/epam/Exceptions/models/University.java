@@ -1,4 +1,4 @@
-package models;
+package com.epam.Exceptions.models;
 
 public class University {
     private String name;

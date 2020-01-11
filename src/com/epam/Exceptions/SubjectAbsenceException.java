@@ -1,6 +1,6 @@
-package Exceptions;
+package com.epam.Exceptions;
 
-import models.Student;
+import com.epam.Exceptions.models.Student;
 
 public class SubjectAbsenceException extends RuntimeException {
     private Student student;

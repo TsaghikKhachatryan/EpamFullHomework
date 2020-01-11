@@ -1,6 +1,4 @@
-package Exceptions;
-
-import models.Mark;
+package com.epam.Exceptions;
 
 public class MarkOutOfRangeException extends RuntimeException {
     private int value;
