@@ -1,6 +1,6 @@
 package com.epam.main;
 
-import com.epam.Exceptions.FacultyAbsenceException;
+import com.epam.exceptions.FacultyAbsenceException;
 import com.epam.helpers.UniversityHelper;
 import com.epam.models.*;
 

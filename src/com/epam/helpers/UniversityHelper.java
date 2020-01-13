@@ -1,55 +1,56 @@
 package com.epam.helpers;
 
-import com.epam.Exceptions.FacultyAbsenceException;
-import com.epam.Exceptions.GroupAbsenceException;
-import com.epam.Exceptions.StudentAbsenceException;
-import com.epam.Exceptions.SubjectAbsenceException;
+import com.epam.exceptions.FacultyAbsenceException;
+import com.epam.exceptions.GroupAbsenceException;
+import com.epam.exceptions.StudentAbsenceException;
+import com.epam.exceptions.SubjectAbsenceException;
 import com.epam.models.*;
 
 import java.util.Random;
 
 public class UniversityHelper {
 
-    public static University creteTheUniversity() {
-        String mathematics = "Mathematics";
-        String english = "English";
-        String armenian = "Armenian";
-        String logic = "Logic";
-        String sociology = "Sociology";
-        String physics = "Physics";
+    private static final String MATHEMATICS = "Mathematics";
+    private static final String ARMENIAN = "ARMENIAN";
+    private static final String LOGIC = "LOGIC";
+    private static final String SOCIOLOGY = "SOCIOLOGY";
+    private static final String PHYSICS = "PHYSICS";
+    private static final String ENGLISH = "ENGLISH";
 
-        String[] subjectsOfGroup701 = new String[]{physics, sociology, armenian};
-        String[] subjectsOfGroup702 = new String[]{mathematics, logic, sociology};
-        String[] subjectsOfGroup501 = new String[]{english, logic, armenian};
-        String[] subjectsOfGroup502 = new String[]{english, sociology, physics};
+    public static University creteTheUniversity() {
+
+        String[] subjectsOfGroup701 = new String[]{PHYSICS, SOCIOLOGY, ARMENIAN};
+        String[] subjectsOfGroup702 = new String[]{MATHEMATICS, LOGIC, SOCIOLOGY};
+        String[] subjectsOfGroup501 = new String[]{ENGLISH, LOGIC, ARMENIAN};
+        String[] subjectsOfGroup502 = new String[]{ENGLISH, SOCIOLOGY, PHYSICS};
 
         Mark.MarkBuilder markBuilder = new Mark.MarkBuilder();
-        markBuilder.subject(physics);
+        markBuilder.subject(PHYSICS);
         Mark physicsA = markBuilder.value(5).build();
         Mark physicsB = markBuilder.value(4).build();
         Mark physicsC = markBuilder.value(3).build();
 
-        markBuilder.subject(sociology);
+        markBuilder.subject(SOCIOLOGY);
         Mark sociologyA = markBuilder.value(5).build();
         Mark sociologyB = markBuilder.value(4).build();
         Mark sociologyC = markBuilder.value(3).build();
 
-        markBuilder.subject(armenian);
+        markBuilder.subject(ARMENIAN);
         Mark armenianA = markBuilder.value(5).build();
         Mark armenianB = markBuilder.value(4).build();
         Mark armenianC = markBuilder.value(3).build();
 
-        markBuilder.subject(mathematics);
+        markBuilder.subject(MATHEMATICS);
         Mark mathematicsA = markBuilder.value(5).build();
         Mark mathematicsB = markBuilder.value(4).build();
         Mark mathematicsC = markBuilder.value(3).build();
 
-        markBuilder.subject(logic);
+        markBuilder.subject(LOGIC);
         Mark logicA = markBuilder.value(5).build();
         Mark logicB = markBuilder.value(4).build();
         Mark logicC = markBuilder.value(3).build();
 
-        markBuilder.subject(english);
+        markBuilder.subject(ENGLISH);
         Mark englishA = markBuilder.value(5).build();
         Mark englishB = markBuilder.value(4).build();
         Mark englishC = markBuilder.value(3).build();

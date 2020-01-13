@@ -1,4 +1,4 @@
-package com.epam.Exceptions;
+package com.epam.exceptions;
 
 import com.epam.models.University;
 
