@@ -1,6 +1,5 @@
 package com.epam.main;
 
-import com.epam.exceptions.FacultyAbsenceException;
 import com.epam.helpers.UniversityHelper;
 import com.epam.models.*;
 
@@ -19,10 +18,6 @@ public class Main {
         Faculty faculty = UniversityHelper.getRandomFaculty(university);
         UniversityHelper.getAverageMarkOfFacultyFromSubject(faculty, UniversityHelper.getRandomSubject());
 
-        try {
-            UniversityHelper.getAverageMarkOfUniversityFromSubject(university, UniversityHelper.getRandomSubject());
-        } catch (FacultyAbsenceException e) {
-            System.out.println(e.toString());
-        }
+        UniversityHelper.getAverageMarkOfUniversityFromSubject(university, UniversityHelper.getRandomSubject());
     }
 }

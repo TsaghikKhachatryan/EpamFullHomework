@@ -134,74 +134,98 @@ public class UniversityHelper {
     }
 
     public static void getAverageMarkOfGroupFromSubject(Group group, String subject) {
-        float averageValue = 0;
+        int countOfMarks = getMarksCount(group, subject);
+        int marksTotalValue = getMarksTotalValue(group, subject);
+        System.out.println("Group : " + group.getName() + " - average mark from " + subject + " : "
+                + marksTotalValue / countOfMarks);
+    }
+
+    public static void getAverageMarkOfFacultyFromSubject(Faculty faculty, String subject) {
+        int marksCount = getMarksCount(faculty, subject);
+        int markTotalValue = getMarksTotalValue(faculty, subject);
+        System.out.println("Faculty : " + faculty.getName() + " - average mark from " + subject + " : "
+                + markTotalValue / marksCount);
+    }
+
+    public static void getAverageMarkOfUniversityFromSubject(University university, String subject) {
+        int markCount = getMarksCount(university, subject);
+        int marksTotalValues = getMarksTotalValue(university, subject);
+        System.out.println("University : " + university.getName() + " - average mark from " + subject + " : "
+                + marksTotalValues / markCount);
+    }
+
+    private static int getMarksCount(University university, String subject) {
         int quantityOfMarks = 0;
+        if (checkUniversity(university)) {
+            throw new FacultyAbsenceException(university);
+        }
+        for (Faculty faculty : university.getFaculties()) {
+            quantityOfMarks += getMarksCount(faculty, subject);
+        }
+        return quantityOfMarks;
+    }
+
+    private static int getMarksTotalValue(University university, String subject) {
+        int marksTotalValue = 0;
+        if (checkUniversity(university)) {
+            throw new FacultyAbsenceException(university);
+        }
+        for (Faculty faculty : university.getFaculties()) {
+            marksTotalValue += getMarksCount(faculty, subject);
+        }
+        return marksTotalValue;
+    }
+
+    private static int getMarksCount(Faculty faculty, String subject) {
+        int quantityOfMarks = 0;
+        if (checkUniversityFaculties(faculty)) {
+            throw new GroupAbsenceException(faculty);
+        }
+        for (Group group : faculty.getGroups()) {
+            quantityOfMarks += getMarksCount(group, subject);
+        }
+        return quantityOfMarks;
+    }
+
+    private static int getMarksTotalValue(Faculty faculty, String subject) {
+        int marksTotalValue = 0;
+        if (checkUniversityFaculties(faculty)) {
+            throw new GroupAbsenceException(faculty);
+        }
+        for (Group group : faculty.getGroups()) {
+            marksTotalValue += getMarksCount(group, subject);
+        }
+        return marksTotalValue;
+    }
+
+    private static int getMarksCount(Group group, String subject) {
+        int count = 0;
         if (checkGroupStudents(group)) {
             throw new StudentAbsenceException(group);
         }
         for (Student student : group.getStudents()) {
             for (Mark mark : student.getMarks()) {
                 if (mark.getSubject().equals(subject)) {
-                    averageValue += mark.getValue();
-                    ++quantityOfMarks;
+                    ++count;
                 }
             }
         }
-        System.out.println("Group : " + group.getName() + " - average mark from " + subject + " : "
-                + averageValue / quantityOfMarks);
+        return count;
     }
 
-    public static void getAverageMarkOfFacultyFromSubject(Faculty faculty, String subject) {
-        float averageValue = 0;
-        int quantityOfMarks = 0;
-        if (checkUniversityFaculties(faculty)) {
-            throw new GroupAbsenceException(faculty);
+    private static int getMarksTotalValue(Group group, String subject) {
+        int sum = 0;
+        if (checkGroupStudents(group)) {
+            throw new StudentAbsenceException(group);
         }
-        for (Group group : faculty.getGroups()) {
-            if (checkGroupStudents(group)) {
-                throw new StudentAbsenceException(group);
-            }
-            for (Student student : group.getStudents()) {
-                for (Mark mark : student.getMarks()) {
-                    if (mark.getSubject().equals(subject)) {
-                        averageValue += mark.getValue();
-                        ++quantityOfMarks;
-                    }
+        for (Student student : group.getStudents()) {
+            for (Mark mark : student.getMarks()) {
+                if (mark.getSubject().equals(subject)) {
+                    sum += mark.getValue();
                 }
             }
         }
-        System.out.println("Faculty : " + faculty.getName() + " - average mark from " + subject + " : "
-                + averageValue / quantityOfMarks);
-    }
-
-    public static void getAverageMarkOfUniversityFromSubject(University university, String subject)
-            throws FacultyAbsenceException {
-
-        float averageValue = 0;
-        int quantityOfMarks = 0;
-        if (checkUniversity(university)) {
-            throw new FacultyAbsenceException(university);
-        }
-        for (Faculty faculty : university.getFaculties()) {
-            if (checkUniversityFaculties(faculty)) {
-                throw new GroupAbsenceException(faculty);
-            }
-            for (Group group : faculty.getGroups()) {
-                if (checkGroupStudents(group)) {
-                    throw new StudentAbsenceException(group);
-                }
-                for (Student student : group.getStudents()) {
-                    for (Mark mark : student.getMarks()) {
-                        if (mark.getSubject().equals(subject)) {
-                            averageValue += mark.getValue();
-                            ++quantityOfMarks;
-                        }
-                    }
-                }
-            }
-        }
-        System.out.println("University : " + university.getName() + " - average mark from " + subject + " : "
-                + averageValue / quantityOfMarks);
+        return sum;
     }
 
     private static boolean checkUniversity(University university) {
