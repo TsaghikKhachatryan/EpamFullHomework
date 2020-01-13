@@ -25,35 +25,29 @@ public class UniversityHelper {
         String[] subjectsOfGroup502 = new String[]{ENGLISH, SOCIOLOGY, PHYSICS};
 
         Mark.MarkBuilder markBuilder = new Mark.MarkBuilder();
-        markBuilder.subject(PHYSICS);
-        Mark physicsA = markBuilder.value(5).build();
-        Mark physicsB = markBuilder.value(4).build();
-        Mark physicsC = markBuilder.value(3).build();
+        Mark physicsA = markBuilder.subject(PHYSICS).value(5).build();
+        Mark physicsB = markBuilder.subject(PHYSICS).value(4).build();
+        Mark physicsC = markBuilder.subject(PHYSICS).value(3).build();
 
-        markBuilder.subject(SOCIOLOGY);
-        Mark sociologyA = markBuilder.value(5).build();
-        Mark sociologyB = markBuilder.value(4).build();
-        Mark sociologyC = markBuilder.value(3).build();
+        Mark sociologyA = markBuilder.subject(SOCIOLOGY).value(5).build();
+        Mark sociologyB = markBuilder.subject(SOCIOLOGY).value(4).build();
+        Mark sociologyC = markBuilder.subject(SOCIOLOGY).value(3).build();
 
-        markBuilder.subject(ARMENIAN);
-        Mark armenianA = markBuilder.value(5).build();
-        Mark armenianB = markBuilder.value(4).build();
-        Mark armenianC = markBuilder.value(3).build();
+        Mark armenianA = markBuilder.subject(ARMENIAN).value(5).build();
+        Mark armenianB = markBuilder.subject(ARMENIAN).value(4).build();
+        Mark armenianC = markBuilder.subject(ARMENIAN).value(3).build();
 
-        markBuilder.subject(MATHEMATICS);
-        Mark mathematicsA = markBuilder.value(5).build();
-        Mark mathematicsB = markBuilder.value(4).build();
-        Mark mathematicsC = markBuilder.value(3).build();
+        Mark mathematicsA = markBuilder.subject(MATHEMATICS).value(5).build();
+        Mark mathematicsB = markBuilder.subject(MATHEMATICS).value(4).build();
+        Mark mathematicsC = markBuilder.subject(MATHEMATICS).value(3).build();
 
-        markBuilder.subject(LOGIC);
-        Mark logicA = markBuilder.value(5).build();
-        Mark logicB = markBuilder.value(4).build();
-        Mark logicC = markBuilder.value(3).build();
+        Mark logicA = markBuilder.subject(LOGIC).value(5).build();
+        Mark logicB = markBuilder.subject(LOGIC).value(4).build();
+        Mark logicC = markBuilder.subject(LOGIC).value(3).build();
 
-        markBuilder.subject(ENGLISH);
-        Mark englishA = markBuilder.value(5).build();
-        Mark englishB = markBuilder.value(4).build();
-        Mark englishC = markBuilder.value(3).build();
+        Mark englishA = markBuilder.subject(ENGLISH).value(5).build();
+        Mark englishB = markBuilder.subject(ENGLISH).value(4).build();
+        Mark englishC = markBuilder.subject(ENGLISH).value(3).build();
 
         Student.StudentBuilder studentBuilder701 = new Student.StudentBuilder(subjectsOfGroup701);
         Student student1 = studentBuilder701.firstName("Ani")
