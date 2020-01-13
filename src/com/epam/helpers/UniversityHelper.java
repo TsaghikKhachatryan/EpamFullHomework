@@ -1,10 +1,10 @@
-package com.epam.Exceptions.helpers;
+package com.epam.helpers;
 
 import com.epam.Exceptions.FacultyAbsenceException;
 import com.epam.Exceptions.GroupAbsenceException;
 import com.epam.Exceptions.StudentAbsenceException;
 import com.epam.Exceptions.SubjectAbsenceException;
-import com.epam.Exceptions.models.*;
+import com.epam.models.*;
 
 import java.util.Random;
 

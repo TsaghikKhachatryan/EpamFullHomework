@@ -1,8 +1,8 @@
-package com.epam.Exceptions.main;
+package com.epam.main;
 
 import com.epam.Exceptions.FacultyAbsenceException;
-import com.epam.Exceptions.helpers.UniversityHelper;
-import com.epam.Exceptions.models.*;
+import com.epam.helpers.UniversityHelper;
+import com.epam.models.*;
 
 public class Main {
     public static void main(String[] args) {
