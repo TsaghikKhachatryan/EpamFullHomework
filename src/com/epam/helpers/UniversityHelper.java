@@ -124,7 +124,7 @@ public class UniversityHelper {
     public static void calculateAverageMarkOfGroupFromSubject(Group group, String subject) {
         float averageValue = 0;
         int quantityOfMarks = 0;
-        if (group.getStudents() == null || group.getStudents().length == 0) {
+        if (checkGroupStudents(group)) {
             throw new StudentAbsenceException(group);
         }
         for (Student student : group.getStudents()) {
@@ -171,11 +171,11 @@ public class UniversityHelper {
             throw new FacultyAbsenceException(university);
         }
         for (Faculty faculty : university.getFaculties()) {
-            if (faculty.getGroups() == null || faculty.getGroups().length == 0) {
+            if (checkUniversityFaculties (faculty)) {
                 throw new GroupAbsenceException(faculty);
             }
             for (Group group : faculty.getGroups()) {
-                if (group.getStudents() == null || group.getStudents().length == 0) {
+                if (checkGroupStudents(group)) {
                     throw new StudentAbsenceException(group);
                 }
                 for (Student student : group.getStudents()) {
@@ -192,6 +192,14 @@ public class UniversityHelper {
                 + averageValue / quantityOfMarks);
     }
 
+    private static boolean checkGroupStudents(Group group){
+        return (group.getStudents() == null || group.getStudents().length == 0);
+    }
+
+    private static boolean checkUniversityFaculties (Faculty faculty){
+        return (faculty.getGroups() == null || faculty.getGroups().length == 0);
+    }
+
     public static Student getRandomStudent(University university) {
         Group group = getRandomGroup(university);
         Random rand = new Random();
@@ -199,7 +207,7 @@ public class UniversityHelper {
         return group.getStudents()[rand_int];
     }
 
-    public static Student getRandomStudent(Group group) {
+    private static Student getRandomStudent(Group group) {
         Random rand = new Random();
         int rand_int = rand.nextInt(group.getStudents().length);
         return group.getStudents()[rand_int];
@@ -235,7 +243,7 @@ public class UniversityHelper {
         return university.getFaculties()[rand_int];
     }
 
-    public static Group getRandomGroup(Faculty faculty) {
+    private static Group getRandomGroup(Faculty faculty) {
         Random rand = new Random();
         int rand_int = rand.nextInt(faculty.getGroups().length);
         return faculty.getGroups()[rand_int];
