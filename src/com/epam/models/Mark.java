@@ -3,6 +3,10 @@ package com.epam.models;
 import com.epam.exceptions.MarkOutOfRangeException;
 
 public class Mark {
+
+    private static final int MIN_MARK_VALUE =0;
+    private static final int MAX_MARK_VALUE =10;
+
     private int value;
     private String subject;
 
@@ -12,13 +16,11 @@ public class Mark {
     }
 
     public static class MarkBuilder {
-        private int minMarkValue=0;
-        private int maxMarkValue=10;
         private int value;
         private String subject;
 
         public MarkBuilder value(int value) {
-            if(value<minMarkValue||value>maxMarkValue){
+            if(value<MIN_MARK_VALUE||value>MAX_MARK_VALUE){
                 throw new MarkOutOfRangeException(value);
             }
             this.value = value;
@@ -31,8 +33,8 @@ public class Mark {
         }
 
         public Mark build() {
-            Mark m = new Mark(this);
-            return m;
+            Mark mark = new Mark(this);
+            return mark;
         }
 
     }
