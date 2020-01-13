@@ -9,19 +9,18 @@ public class Main {
         University university = UniversityHelper.creteTheUniversity();
 
         //Getting random student from University and calculating average mark
-        UniversityHelper.calculateStudentsAverageMarkFromAllSubjects(UniversityHelper.getRandomStudent(university));
+        UniversityHelper.getStudentsAverageMarkFromAllSubjects(UniversityHelper.getRandomStudent(university));
 
         //Getting a random group from University and calculating average mark from random subject of that group
         Group group = UniversityHelper.getRandomGroup(university);
-        UniversityHelper.calculateAverageMarkOfGroupFromSubject(group, UniversityHelper.getRandomSubject(group));
+        UniversityHelper.getAverageMarkOfGroupFromSubject(group, UniversityHelper.getRandomSubject());
 
         //Getting a random faculty from University and calculating average mark from random subject of that faculty
         Faculty faculty = UniversityHelper.getRandomFaculty(university);
-        UniversityHelper.calculateAverageMarkOfFacultyFromSubject(faculty, UniversityHelper.getRandomSubject(faculty));
+        UniversityHelper.getAverageMarkOfFacultyFromSubject(faculty, UniversityHelper.getRandomSubject());
 
         try {
-            UniversityHelper.calculateAverageMarkOfUniversityFromSubject(university,
-                    UniversityHelper.getRandomSubject(university));
+            UniversityHelper.getAverageMarkOfUniversityFromSubject(university, UniversityHelper.getRandomSubject());
         } catch (FacultyAbsenceException e) {
             System.out.println(e.toString());
         }
