@@ -72,7 +72,8 @@ public class StudentHelper {
     public static void printStudentsFirstAndLatNames(StudentsDoublyLinkedList studentsDoublyLinkedArray) {
         StudentsDoublyLinkedList.ListIterator iterator = studentsDoublyLinkedArray.iterator();
         while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+            Student student = iterator.next();
+            System.out.println(student.getFirstName() + " " + student.getLastName());
         }
         System.out.println();
     }
