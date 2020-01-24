@@ -1,4 +1,4 @@
-package com.epam.exceptions;
+package com.epam.university.exceptions;
 
 public class MarkOutOfRangeException extends RuntimeException {
     private int value;

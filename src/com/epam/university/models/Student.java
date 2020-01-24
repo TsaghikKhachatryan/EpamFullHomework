@@ -1,4 +1,4 @@
-package com.epam.models;
+package com.epam.university.models;
 
 public class Student {
     private String firstName;

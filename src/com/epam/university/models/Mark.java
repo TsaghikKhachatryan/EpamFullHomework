@@ -1,6 +1,6 @@
-package com.epam.models;
+package com.epam.university.models;
 
-import com.epam.exceptions.MarkOutOfRangeException;
+import com.epam.university.exceptions.MarkOutOfRangeException;
 
 public class Mark {
 

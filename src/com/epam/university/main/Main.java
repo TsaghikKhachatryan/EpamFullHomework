@@ -1,7 +1,7 @@
-package com.epam.main;
+package com.epam.university.main;
 
-import com.epam.helpers.UniversityHelper;
-import com.epam.models.*;
+import com.epam.university.helpers.UniversityHelper;
+import com.epam.university.models.*;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,10 +1,10 @@
-package com.epam.helpers;
+package com.epam.university.helpers;
 
-import com.epam.exceptions.FacultyAbsenceException;
-import com.epam.exceptions.GroupAbsenceException;
-import com.epam.exceptions.StudentAbsenceException;
-import com.epam.exceptions.SubjectAbsenceException;
-import com.epam.models.*;
+import com.epam.university.exceptions.FacultyAbsenceException;
+import com.epam.university.exceptions.GroupAbsenceException;
+import com.epam.university.exceptions.StudentAbsenceException;
+import com.epam.university.exceptions.SubjectAbsenceException;
+import com.epam.university.models.*;
 
 import java.util.Random;
 
@@ -51,48 +51,48 @@ public class UniversityHelper {
                 .firstName("Ani")
                 .lastName("Poghosyan")
                 .subject(new String[]{PHYSICS, SOCIOLOGY, ARMENIAN, LOGIC})
-                .marks(new Mark[]{physicsB, sociologyC, armenianA})
+                .marks(new Mark[]{physicsB, sociologyC, armenianA, logicA})
                 .build();
 
         Student student2 = studentBuilder
                 .firstName("Aram")
                 .lastName("Nikoyan")
                 .subject(new String[]{MATHEMATICS, LOGIC, SOCIOLOGY})
-                .marks(new Mark[]{physicsC, sociologyC, armenianB, armenianB, physicsB})
+                .marks(new Mark[]{physicsC, sociologyC, armenianB, armenianB, physicsB, mathematicsA, logicA})
                 .build();
 
         Student student3 = studentBuilder
                 .firstName("Lilit")
                 .lastName("Azizyan")
                 .subject(new String[]{ENGLISH, LOGIC, ARMENIAN})
-                .marks(new Mark[]{physicsA, sociologyA, armenianB, physicsA, sociologyB})
+                .marks(new Mark[]{physicsA, sociologyA, armenianB, physicsA, sociologyB, englishA, logicA})
                 .build();
 
         Student student4 = studentBuilder
                 .firstName("Anna")
                 .lastName("Poghosyan")
                 .subject(new String[]{SOCIOLOGY, ENGLISH, PHYSICS, LOGIC})
-                .marks(new Mark[]{mathematicsA, logicC, sociologyA, logicB})
+                .marks(new Mark[]{mathematicsA, logicC, sociologyA, logicB, englishA, physicsA})
                 .build();
 
         Student student5 = studentBuilder
                 .firstName("Arman")
                 .lastName("Nikoyan")
                 .subject(new String[]{PHYSICS, SOCIOLOGY, ARMENIAN})
-                .marks(new Mark[]{mathematicsA, logicA, sociologyB, mathematicsB, mathematicsC})
+                .marks(new Mark[]{mathematicsA, logicA, sociologyB, mathematicsB, mathematicsC, physicsA, armenianA})
                 .build();
 
         Student student6 = studentBuilder
                 .firstName("Karine")
                 .lastName("Poghosyan")
                 .subject(new String[]{MATHEMATICS, LOGIC, SOCIOLOGY, ARMENIAN})
-                .marks(new Mark[]{logicC, armenianA, logicB, englishB})
+                .marks(new Mark[]{logicC, armenianA, logicB, englishB, mathematicsA, sociologyA})
                 .build();
 
         Student student7 = studentBuilder
                 .firstName("Minas")
                 .lastName("Nikoyan")
-                .subject(new String[]{ENGLISH, LOGIC, ARMENIAN, LOGIC})
+                .subject(new String[]{ENGLISH, LOGIC, ARMENIAN})
                 .marks(new Mark[]{logicA, armenianA, logicB, englishC, armenianA, armenianC})
                 .build();
 
