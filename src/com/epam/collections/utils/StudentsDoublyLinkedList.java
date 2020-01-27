@@ -4,6 +4,7 @@ import com.epam.collections.interfaces.DoublyLinkedList;
 import com.epam.collections.models.Student;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class StudentsDoublyLinkedList implements DoublyLinkedList, Iterable {
     private int size = 0;
@@ -34,7 +35,7 @@ public class StudentsDoublyLinkedList implements DoublyLinkedList, Iterable {
     @Override
     public Student pop() {
         if (headNode == null) {
-            throw new NullPointerException("Students doubly linked list is empty");
+            throw new NoSuchElementException("Students doubly linked list is empty");
         } else {
             StudentNode removingNode = headNode;
             if (headNode.getNext() == null) {
