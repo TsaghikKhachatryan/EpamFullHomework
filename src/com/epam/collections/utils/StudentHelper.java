@@ -9,7 +9,9 @@ public class StudentHelper {
     public static ArrayList<Student> createStudentsArrayList() {
         ArrayList<Student> students = new ArrayList<>();
         students.add(new Student("Abraham", "Poghosyan", 20));
+        students.add(new Student("Abraham", "Serobyan", 55));
         students.add(new Student("Barsegh", "Khachatryan", 19));
+        students.add(new Student("Barsegh", "Khachatryan", 50));
         students.add(new Student("Colak", "Sisakyan", 21));
         students.add(new Student("Martiros", "Nalbandyan", 25));
         return students;
@@ -42,16 +44,12 @@ public class StudentHelper {
         return students;
     }
 
-    public static void sortByFirstNameAscending(ArrayList<Student> students) {
-        Collections.sort(students, new ComparatorStudentsByFirstNameAscending());
+    public static void sortByFirstNameAscendingAndAgeDescending(ArrayList<Student> students) {
+        Collections.sort(students, new ComparatorStudentsByFirstNameAscendingAndAgeDescendingOrder());
     }
 
     public static void sortByLastNameAscending(LinkedList<Student> students) {
         Collections.sort(students);
-    }
-
-    public static void sortByAgeDescending(ArrayList<Student> students) {
-        Collections.sort(students, new ComparatorByStudentsAgeDescending());
     }
 
     public static void printStudents(List<Student> students) {

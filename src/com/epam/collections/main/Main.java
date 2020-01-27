@@ -17,12 +17,8 @@ public class Main {
     private static void manageStudents() {
         ArrayList<Student> studentsArrayList = StudentHelper.createStudentsArrayList();
 
-        System.out.println("== Printing Students ordered by first name ascending order ==");
-        StudentHelper.sortByFirstNameAscending(studentsArrayList);
-        StudentHelper.printStudents(studentsArrayList);
-
-        System.out.println("== Printing Students ordered by age descending order ==");
-        StudentHelper.sortByAgeDescending(studentsArrayList);
+        System.out.println("== Printing Students ordered by first name ascending and age descending order==");
+        StudentHelper.sortByFirstNameAscendingAndAgeDescending(studentsArrayList);
         StudentHelper.printStudents(studentsArrayList);
 
         LinkedList<Student> studentsLinkedList = StudentHelper.createStudentsLinkedList();
