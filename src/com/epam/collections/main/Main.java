@@ -1,5 +1,7 @@
 package com.epam.collections.main;
 
+import com.epam.collections.interfaces.DoublyLinkedList;
+import com.epam.collections.interfaces.DynamicArray;
 import com.epam.collections.models.Student;
 import com.epam.collections.utils.StudentHelper;
 import com.epam.collections.utils.StudentsDoublyLinkedList;
@@ -16,6 +18,7 @@ public class Main {
 
     private static void manageStudents() {
         ArrayList<Student> studentsArrayList = StudentHelper.createStudentsArrayList();
+        Student student = new Student(11, "Aram", "hsxsb", 12);
 
         System.out.println("== Printing Students ordered by first name ascending and age descending order==");
         StudentHelper.sortByFirstNameAscendingAndAgeDescending(studentsArrayList);
@@ -28,6 +31,9 @@ public class Main {
 
         StudentsDynamicArray studentsDynamicArrayList = StudentHelper.createStudentsDynamicArrayList();
         System.out.println("== Printing Students First And LatNames in Dynamic array ==");
+        StudentHelper.printStudentsFirstAndLatNames(studentsDynamicArrayList);
+        studentsDynamicArrayList.remove(student);
+        System.out.println("== Printing Students First And LatNames in Dynamic array after remove method ==");
         StudentHelper.printStudentsFirstAndLatNames(studentsDynamicArrayList);
 
         StudentsDoublyLinkedList studentsDoublyLinkedList = StudentHelper.createStudentsDoublyLinkedArray();

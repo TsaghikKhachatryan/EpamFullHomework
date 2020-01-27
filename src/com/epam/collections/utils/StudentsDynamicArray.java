@@ -25,19 +25,19 @@ public class StudentsDynamicArray implements DynamicArray {
 
     @Override
     public boolean remove(Student student) {
-        Student[] newStudentsArray = new Student[students.length];
         boolean found = false;
-        for (int j = 0, i = 0; i < students.length; ++i) {
-            if (students[i] == student && !found) {
+        for (int j = 0, i = 0; i < size(); ++i) {
+            if (students[i].equals(student) && !found) {
                 found = true;
-            } else {
-                newStudentsArray[j] = students[i];
-                ++j;
             }
-        }
-        if (found) {
-            students = newStudentsArray;
-            --index;
+            if (found) {
+                if (i == size() - 1) {
+                    students[i] = null;
+                    --index;
+                } else {
+                    students[i] = students[i + 1];
+                }
+            }
         }
         return found;
     }
