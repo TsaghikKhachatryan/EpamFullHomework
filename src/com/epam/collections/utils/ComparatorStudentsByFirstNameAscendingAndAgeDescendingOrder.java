@@ -4,13 +4,13 @@ import com.epam.collections.models.Student;
 
 import java.util.Comparator;
 
-public class ComparatorStudentsByFirstNameAscendingAndAgeDescendingOrder implements Comparator{
+public class ComparatorStudentsByFirstNameAscendingAndAgeDescendingOrder implements Comparator<Student>{
 
     @Override
-    public int compare(Object object1, Object object2) {
-        int result = ((Student) object1).getFirstName().compareTo(((Student) object2).getFirstName());
+    public int compare(Student student1, Student studnt2) {
+        int result = student1.getFirstName().compareTo(studnt2.getFirstName());
         if (result == 0) {
-            result = -((Student) object1).getAge() - (((Student) object2).getAge());
+            result = -(student1.getAge() - studnt2.getAge());
         }
         return result;
     }

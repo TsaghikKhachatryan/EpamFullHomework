@@ -26,8 +26,8 @@ public class StudentsDynamicArray implements DynamicArray {
     @Override
     public boolean remove(Student student) {
         boolean found = false;
-        for (int j = 0, i = 0; i < size(); ++i) {
-            if (students[i].equals(student) && !found) {
+        for (int i = 0; i < size(); ++i) {
+            if (!found && students[i].equals(student)) {
                 found = true;
             }
             if (found) {

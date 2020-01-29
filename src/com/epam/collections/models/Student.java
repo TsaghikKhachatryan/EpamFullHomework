@@ -1,6 +1,6 @@
 package com.epam.collections.models;
 
-public class Student implements Comparable {
+public class Student implements Comparable<Student> {
     private int id;
     private String firstName;
     private String lastName;
@@ -36,8 +36,8 @@ public class Student implements Comparable {
     }
 
     @Override
-    public int compareTo(Object object) {
-        return this.lastName.compareTo(((Student) object).lastName);
+    public int compareTo(Student student) {
+        return this.lastName.compareTo(student.lastName);
     }
 
     @Override
