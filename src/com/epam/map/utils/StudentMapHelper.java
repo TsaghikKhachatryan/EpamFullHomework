@@ -2,6 +2,7 @@ package com.epam.map.utils;
 
 import com.epam.map.models.Faculties;
 import com.epam.map.models.Student;
+import com.epam.university.models.Faculty;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +32,26 @@ public class StudentMapHelper {
             }
         }
         return studentsHashMap;
+    }
+
+    public static HashMap<Faculties, Integer> calculateStudentsCountInFaculty(ArrayList<Student> studentsArrayList) {
+        HashMap<Faculties, Integer> facultiesHashMap = new HashMap<>();
+        for (Student student : studentsArrayList) {
+            Faculties faculty = student.getFaculty();
+            if (facultiesHashMap.get(faculty) == null) {
+                facultiesHashMap.put(faculty, 1);
+            } else {
+                facultiesHashMap.put(faculty, facultiesHashMap.get(faculty) + 1);
+            }
+        }
+        return facultiesHashMap;
+    }
+
+    public static void printStudentsCountInEachFaculty(HashMap<Faculties, Integer> facultiesHashMap) {
+        for (Faculties faculties : facultiesHashMap.keySet()) {
+            Integer value = facultiesHashMap.get(faculties);
+            System.out.println(faculties + " " + value);
+        }
     }
 
     public static void printStudentsHashMap(HashMap<Student, Integer> studentsHashMap) {

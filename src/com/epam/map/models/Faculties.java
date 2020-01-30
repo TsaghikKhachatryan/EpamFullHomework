@@ -6,4 +6,5 @@ public enum Faculties {
     PHILOSOPHY,
     ENGLISH,
     SOCIOLOGY
+
 }
