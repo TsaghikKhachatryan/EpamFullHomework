@@ -1,20 +1,16 @@
 package com.epam.collections.models;
 
+import java.util.Objects;
+
 public class Student implements Comparable<Student> {
-    private int id;
     private String firstName;
     private String lastName;
     private int age;
 
-    public Student(int id, String firstName, String lastName, int age) {
-        this.id = id;
+    public Student(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getFirstName() {
@@ -35,13 +31,17 @@ public class Student implements Comparable<Student> {
                 " " + this.age;
     }
 
-    @Override
-    public int compareTo(Student student) {
-        return this.lastName.compareTo(student.lastName);
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Student student = (Student) object;
+        return age == student.age &&
+                Objects.equals(firstName, student.firstName) &&
+                Objects.equals(lastName, student.lastName);
     }
 
     @Override
-    public boolean equals(Object object) {
-        return this.getId() == ((Student) object).getId();
+    public int compareTo(Student student) {
+        return this.lastName.compareTo(student.lastName);
     }
 }

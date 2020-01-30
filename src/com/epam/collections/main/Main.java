@@ -18,7 +18,7 @@ public class Main {
 
     private static void manageStudents() {
         ArrayList<Student> studentsArrayList = StudentHelper.createStudentsArrayList();
-        Student student = new Student(11, "Aram", "hsxsb", 12);
+        Student student = new Student("Abraham", "Poghosyan", 20);
 
         System.out.println("== Printing Students ordered by first name ascending and age descending order==");
         StudentHelper.sortByFirstNameAscendingAndAgeDescending(studentsArrayList);
