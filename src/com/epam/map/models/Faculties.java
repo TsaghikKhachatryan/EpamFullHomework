@@ -1,6 +1,6 @@
 package com.epam.map.models;
 
-public enum Faculty {
+public enum Faculties {
     MATH,
     PHYSICS,
     PHILOSOPHY,

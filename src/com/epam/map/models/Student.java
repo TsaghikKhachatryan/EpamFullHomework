@@ -6,10 +6,10 @@ public class Student {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private Faculty faculty;
+    private Faculties faculty;
     private int age;
 
-    public Student(String firstName, String lastName, String phoneNumber, Faculty faculty, int age) {
+    public Student(String firstName, String lastName, String phoneNumber, Faculties faculty, int age) {
         this.age = age;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,7 +33,7 @@ public class Student {
         return phoneNumber;
     }
 
-    public Faculty getFaculty() {
+    public Faculties getFaculty() {
         return faculty;
     }
 

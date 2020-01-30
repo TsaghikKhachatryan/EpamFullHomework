@@ -12,9 +12,10 @@ public class Main {
     }
 
     private static void manageStudents() {
-        StudentMapHelper studentMapHelper = new StudentMapHelper();
-        ArrayList<Student> studentArrayList = studentMapHelper.initStudentsArrayList();
-        HashMap<Student, Integer> studentsHashMap = studentMapHelper.fillHashMapFromArrayList(studentArrayList);
-        studentMapHelper.printHashMap(studentsHashMap);
+        ArrayList<Student> studentArrayList = StudentMapHelper.createStudentsArrayList();
+        HashMap<Student, Integer> studentsHashMap = StudentMapHelper.createHashMapFromArrayList(studentArrayList);
+        StudentMapHelper.printStudentsHashMap(studentsHashMap);
+        StudentMapHelper.printFaculties();
+
     }
 }
