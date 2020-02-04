@@ -54,10 +54,6 @@ public class StudentMapHelper {
     }
 
     public static void printStudentsHashMap(HashMap<Student, Integer> studentsHashMap) {
-        System.out.println(Arrays.asList(studentsHashMap));
-        /*for (Student student : studentsHashMap.keySet()) {
-            Integer value = studentsHashMap.get(student);
-            System.out.println(student + " " + value);
-        }*/
+        System.out.println(studentsHashMap.entrySet());
     }
 }
