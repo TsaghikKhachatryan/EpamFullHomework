@@ -7,6 +7,7 @@ import com.epam.set.model.Student;
 import java.util.Iterator;
 
 public class SetHelper {
+
     public static MySet<Student> createStudentsSet() {
         MySet<Student> myStudentSet = new MySet<>();
         myStudentSet.add(new Student("Abov", "Sargsyan", 20));
