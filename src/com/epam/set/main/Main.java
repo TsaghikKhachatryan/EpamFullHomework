@@ -3,6 +3,7 @@ package com.epam.set.main;
 import com.epam.set.model.Coffee;
 import com.epam.set.model.Flower;
 import com.epam.set.model.Student;
+import com.epam.set.utils.MyLinkedSet;
 import com.epam.set.utils.MySet;
 import com.epam.set.utils.SetHelper;
 
@@ -20,5 +21,7 @@ public class Main {
         SetHelper.printSet(myCoffeeSet);
         System.out.println("Flower's Set");
         SetHelper.printSet(myFlowerSet);
+        MyLinkedSet<Student> studentMyLinkedSet=SetHelper.createStudentsLinkedSet();
+        studentMyLinkedSet.print();
     }
 }

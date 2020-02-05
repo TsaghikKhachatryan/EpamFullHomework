@@ -10,7 +10,7 @@ public class SetHelper {
 
     public static MySet<Student> createStudentsSet() {
         MySet<Student> myStudentSet = new MySet<>();
-        myStudentSet.add(new Student("Abov", "Sargsyan", 20));
+        myStudentSet.add(new Student("Sargis", "Sargsyan", 20));
         myStudentSet.add(new Student("Ani", "Sargsyan", 80));
         myStudentSet.add(new Student("Ani", "Sargsyan", 27));
         myStudentSet.add(new Student("Poghos", "Poghosyan", 21));
@@ -18,6 +18,17 @@ public class SetHelper {
         myStudentSet.add(new Student("Sargis", "Meloyan", 25));
         myStudentSet.add(new Student("Anna", "Mnoyan", 30));
         return myStudentSet;
+    }
+
+    public static MyLinkedSet<Student> createStudentsLinkedSet(){
+        MyLinkedSet<Student> myStudentLinkedSet=new MyLinkedSet<>();
+        myStudentLinkedSet.add(new Student("Sargis", "Sargsyan", 20));
+        myStudentLinkedSet.add(new Student("Abgar", "Sargsyan", 20));
+        myStudentLinkedSet.add(new Student("William", "Sargsyan", 20));
+        myStudentLinkedSet.add(new Student("Gago", "Sargsyan", 20));
+        myStudentLinkedSet.add(new Student("Babken", "Sargsyan", 20));
+        myStudentLinkedSet.add(new Student("Narek", "Sargsyan", 25));
+        return myStudentLinkedSet;
     }
 
     public static MySet<Flower> createFlowerSet() {
@@ -40,9 +51,8 @@ public class SetHelper {
     }
 
     public static void printSet(MySet mySet) {
-        Iterator iterator = mySet.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+        for (Object o :mySet) {
+            System.out.println(o);
         }
         System.out.println();
     }
