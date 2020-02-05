@@ -24,6 +24,7 @@ public class SetHelper {
         MyLinkedSet<Student> myStudentLinkedSet=new MyLinkedSet<>();
         myStudentLinkedSet.add(new Student("Sargis", "Sargsyan", 20));
         myStudentLinkedSet.add(new Student("Abgar", "Sargsyan", 20));
+        myStudentLinkedSet.add(new Student("Abc", "Sargsyan", 20));
         myStudentLinkedSet.add(new Student("William", "Sargsyan", 20));
         myStudentLinkedSet.add(new Student("Gago", "Sargsyan", 20));
         myStudentLinkedSet.add(new Student("Babken", "Sargsyan", 20));

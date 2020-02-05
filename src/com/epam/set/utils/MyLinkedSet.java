@@ -32,7 +32,47 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
 
     @Override
     public boolean remove(T item) {
+        if (item == null) {
+            throw new NullPointerException();
+        }
+        if (contains(item)) {
+            remove(root, item);
+            --size;
+            return true;
+        }
         return false;
+    }
+
+    private Node remove(Node node, T item) {
+        if (node == null || node.data == null) {
+            return null;
+        } else if (item.compareTo(node.data) < 0) {
+            node.left = remove(node.left, item);
+        } else if (item.compareTo(node.data) > 0) {
+            node.right = remove(node.right, item);
+        } else {
+            if (node.left.data == null && node.right.data == null) {
+                node = new Node();
+            } else if (node.left.data == null) {
+                node = node.right;
+            } else if (node.right.data == null) {
+                node = node.left;
+            } else {
+                Node temp = findMin(node.right);
+                node.data=temp.data;
+                node.right=remove(node.right,temp.data);
+            }
+        }
+        return node;
+        //just an experiment)))
+    }
+
+    private Node findMin(Node node) {
+        Node current=node;
+        while (current.left!=null && current.left.data != null){
+            current=current.left;
+        }
+        return current;
     }
 
     @Override

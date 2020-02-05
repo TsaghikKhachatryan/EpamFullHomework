@@ -23,5 +23,6 @@ public class Main {
         SetHelper.printSet(myFlowerSet);
         MyLinkedSet<Student> studentMyLinkedSet=SetHelper.createStudentsLinkedSet();
         studentMyLinkedSet.print();
+        studentMyLinkedSet.remove(new Student("Sargis", "Sargsyan", 20));
     }
 }
