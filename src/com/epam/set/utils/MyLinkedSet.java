@@ -16,11 +16,6 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
     private Node root;
     private int size;
 
-    public MyLinkedSet() {
-        this.size = 0;
-        this.root = new Node();
-    }
-
     /**
      * @return the number of elements in this set
      */
@@ -45,7 +40,7 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
         if (contains(item)) {
             return false;
         } else {
-            add(root, item);
+            root = add(root, item);
             ++size;
             return true;
         }
@@ -89,16 +84,17 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
      * @param node-contains a data
      * @param item-element  to be added to this set
      */
-    private void add(Node node, T item) {
-        if (node.data == null) {
+    private Node add(Node node, T item) {
+        if (node == null) {
+            node = new Node();
             node.data = item;
-            node.left = new Node();
-            node.right = new Node();
+            return node;
         } else if (item.compareTo(node.data) < 0) {
-            add(node.left, item);
+            node.left = add(node.left, item);
         } else {
-            add(node.right, item);
+            node.right = add(node.right, item);
         }
+        return node;
     }
 
     /**
@@ -108,18 +104,18 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
      * @param item-element  to be added to this set
      */
     private Node remove(Node node, T item) {
-        if (node == null || node.data == null) {
+        if (node == null) {
             return null;
         } else if (item.compareTo(node.data) < 0) {
             node.left = remove(node.left, item);
         } else if (item.compareTo(node.data) > 0) {
             node.right = remove(node.right, item);
         } else {
-            if (node.left.data == null && node.right.data == null) {
-                node = new Node();
-            } else if (node.left.data == null) {
+            if (node.left == null && node.right == null) {
+                node = null;
+            } else if (node.left == null) {
                 node = node.right;
-            } else if (node.right.data == null) {
+            } else if (node.right == null) {
                 node = node.left;
             } else {
                 Node temp = findMin(node.right);
@@ -175,7 +171,7 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
     }
 
     private void print(Node node) {
-        if (node.data != null) {
+        if (node != null) {
             print(node.left);
             System.out.println(node.data);
             print(node.right);

@@ -11,18 +11,22 @@ public class Main {
     public static void main(String[] args) {
         manageMySet();
     }
+
     private static void manageMySet() {
-        MySet<Student> myStudentSet= SetHelper.createStudentsSet();
-        MySet<Coffee> myCoffeeSet= SetHelper.createCoffeeSet();
-        MySet<Flower> myFlowerSet= SetHelper.createFlowerSet();
-        System.out.println("Student's Set");
-        SetHelper.printSet(myStudentSet);
-        System.out.println("Coffe's Set");
-        SetHelper.printSet(myCoffeeSet);
-        System.out.println("Flower's Set");
-        SetHelper.printSet(myFlowerSet);
-        MyLinkedSet<Student> studentMyLinkedSet=SetHelper.createStudentsLinkedSet();
-        studentMyLinkedSet.print();
-        studentMyLinkedSet.remove(new Student("Sargis", "Sargsyan", 20));
+        MyLinkedSet<Student> mystudentLinkedSet = SetHelper.createStudentsLinkedSet();
+        MyLinkedSet<Coffee> myCoffeeLinkedSet = SetHelper.createCoffeeLinkedSet();
+        MyLinkedSet<Flower> myFlowerLinkedSet = SetHelper.createFlowerLinkedSet();
+        System.out.println("printing Coffee's set");
+        myCoffeeLinkedSet.print();
+        System.out.println();
+        System.out.println("printing Flower's set");
+        myFlowerLinkedSet.print();
+        System.out.println();
+        System.out.printf("printing Student's set");
+        mystudentLinkedSet.print();
+        System.out.println();
+        mystudentLinkedSet.remove(new Student("Babken", "Sargsyan", 20));
+        System.out.println("printing Students Set after removing");
+        mystudentLinkedSet.print();
     }
 }
