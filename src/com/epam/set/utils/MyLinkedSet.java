@@ -28,14 +28,14 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
      * Adds the specified element to this set
      * if it is not already present
      *
-     * @param item - element to be added to this set
+     * @param item  element to be added to this set
      * @return true if this set did not already contain the specified element
-     * @throws NullPointerException - if the specified element is null
+     * @throws IllegalArgumentException - if the specified element is null
      */
     @Override
     public boolean add(T item) {
         if (item == null) {
-            throw new NullPointerException();
+            throw new IllegalArgumentException();
         }
         if (contains(item)) {
             return false;
@@ -50,7 +50,7 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
      * Removes the specified element
      * from this set if it is present
      *
-     * @param item - object to be removed from this set, if present
+     * @param item  object to be removed from this set, if present
      * @return true if this set contained the specified element
      * @throws NullPointerException - if the specified element is null
      */
@@ -70,7 +70,7 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
     /**
      * Checks if set contains given item
      *
-     * @param item- element whose presence in this set is to be tested
+     * @param item element whose presence in this set is to be tested
      * @return true if this set contains the specified element
      */
     @Override
@@ -81,8 +81,9 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
     /**
      * Adds the specified element to this set
      *
-     * @param node-contains a data
-     * @param item-element  to be added to this set
+     * @param node contains a data
+     * @param item element  to be added to this set
+     * @return added node
      */
     private Node add(Node node, T item) {
         if (node == null) {
@@ -100,8 +101,8 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
     /**
      * Removes the specified element from this set
      *
-     * @param node-contains a data
-     * @param item-element  to be added to this set
+     * @param node contains a data
+     * @param item element  to be added to this set
      */
     private Node remove(Node node, T item) {
         if (node == null) {
@@ -131,7 +132,7 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
      * left recursively until left is NULL.
      * The node whose left is NULL is the node with minimum value.
      *
-     * @param node-contains a data
+     * @param node contains a data
      */
     private Node findMin(Node node) {
         Node current = node;
@@ -142,10 +143,10 @@ public class MyLinkedSet<T extends Comparable> implements Set<T> {
     }
 
     /**
-     * To check if Set contains a given key
+     *Checks if Set contains a given key
      *
-     * @param node-contains a data
-     * @param item-element  to be added to this set
+     * @param node contains a data
+     * @param item element  to be added to this set
      * @return true if the item is present at root,If item is greater
      * than root’s item, we recur for right subtree of root node.
      * Otherwise we recur for left subtree.
