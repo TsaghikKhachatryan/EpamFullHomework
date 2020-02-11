@@ -87,23 +87,17 @@ public class MySet<T extends Comparable> implements Set<T>, Iterable {
     }
 
     public class MySetIterator implements Iterator {
-        T current;
+        int currentIndex = 0;
 
         @Override
         public boolean hasNext() {
-            return arrayList.indexOf(current) < arrayList.size() - 1;
+            return currentIndex < arrayList.size();
         }
 
         @Override
         public Object next() {
-            T item;
-            if (current == null) {
-                item = arrayList.get(0);
-            } else {
-                int index = arrayList.indexOf(current);
-                item = arrayList.get(index + 1);
-            }
-            current = item;
+            T item = arrayList.get(currentIndex);
+            ++currentIndex;
             return item;
         }
     }
