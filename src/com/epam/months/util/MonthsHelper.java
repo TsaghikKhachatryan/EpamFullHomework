@@ -23,6 +23,11 @@ public class MonthsHelper {
     }
 
     public static boolean checkIfHoliday(int day, Months month) {
-        return month.getHLOIDAYS_LIST().contains(day);
+        for (int i = 0; i <month.getHLOIDAYS_LIST().length; i++) {
+            if(month.getHLOIDAYS_LIST()[i]==day){
+                return true;
+            }
+        }
+        return false;
     }
 }
